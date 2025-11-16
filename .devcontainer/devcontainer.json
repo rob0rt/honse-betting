@@ -10,8 +10,5 @@
         "svelte.svelte-vscode"
       ]
     }
-  },
-  "forwardPorts": [
-    3000
-  ]
+  }
 }
