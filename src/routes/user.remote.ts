@@ -1,6 +1,6 @@
 import { query } from "$app/server";
 import * as v from 'valibot';
-import { PrismaClient } from "$lib/prisma/client";
+import { PrismaClient } from "$lib/server/db/client";
 import { DATABASE_URL } from '$env/static/private'
 
 export const getUser = query(v.string(), async (accessToken) => {
@@ -20,15 +20,11 @@ export const getUser = query(v.string(), async (accessToken) => {
         update: {},
         create: {
             id,
+        },
+        include: {
+            bets: true,
         }
     });
 
-    const bets = await prisma.bet.findMany({
-        where: { userId: user.id },
-    });
-
-    return {
-        user,
-        bets,
-    }
+    return user;
 });

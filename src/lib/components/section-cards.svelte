@@ -3,7 +3,7 @@
 	import TrendingUpIcon from '@tabler/icons-svelte/icons/trending-up';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import type { User } from '$lib/server/db/models';
+	import type { User } from '$lib/server/db/browser';
 
 	const { user }: { user: User } = $props();
 </script>

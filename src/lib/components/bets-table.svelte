@@ -1,5 +1,43 @@
 <script lang="ts" module>
+	import * as v from 'valibot';
+
+	function getTotalBetAmount(bet: Bet): number {
+		const b = v.parse(BetDataSchema, bet);
+		if (b.type === BetType.EXACTA && b.data.box) {
+			return bet.amount * 2;
+		} else if (b.type === BetType.TRIFECTA && b.data.box) {
+			return bet.amount * 6;
+		}
+
+		return bet.amount;
+	}
+
 	export const columns: ColumnDef<Bet>[] = [
+		{
+			accessorKey: 'type',
+			header: 'Bet Type',
+			cell: ({ row }) => row.original.type,
+			enableHiding: false
+		},
+		{
+			accessorKey: 'amount',
+			header: 'Bet Amount',
+			cell: ({ row }) => `$${row.original.amount}`,
+			enableHiding: false
+		},
+		{
+			header: 'Total Bet Amount',
+			cell: ({ row }) => {
+				const bet = v.parse(BetDataSchema, row.original);
+				if (bet.type === BetType.EXACTA && bet.data.box) {
+					return bet.amount * 2;
+				} else if (bet.type === BetType.TRIFECTA && bet.data.box) {
+					return bet.amount * 6;
+				}
+
+				return bet.amount;
+			}
+		},
 		// {
 		// 	accessorKey: 'header',
 		// 	header: 'Header',
@@ -88,7 +126,9 @@
 	import { toast } from 'svelte-sonner';
 	import DataTableCellViewer from './data-table-cell-viewer.svelte';
 	import { createRawSnippet } from 'svelte';
-	import type { Bet } from '$lib/server/db/models';
+	// import type { BetModel as Bet } from '$lib/server/db/models';
+	import { BetType, type Bet } from '$lib/server/db/client';
+	import { BetDataSchema } from '$lib/schemas/bet.js';
 
 	let { bets }: { bets: Bet[] } = $props();
 	let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 10 });
