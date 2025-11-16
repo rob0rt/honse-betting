@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/lib/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      String @id
+  balance Int    @default(0)
+  bets    Bet[]
+}
+
+model Race {
+  id   Int   @id @default(autoincrement())
+  bets Bet[]
+}
+
+model Bet {
+  id     Int    @id @default(autoincrement())
+  amount Int
+  userId String
+  raceId Int
+  user   User   @relation(fields: [userId], references: [id])
+  race   Race   @relation(fields: [raceId], references: [id])
+}
