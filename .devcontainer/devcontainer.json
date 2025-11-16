@@ -6,6 +6,7 @@
         "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
+        "IvanArjona.cloudflaretunnel",
         "Prisma.prisma",
         "svelte.svelte-vscode"
       ]
