@@ -36,16 +36,19 @@ export type UserSumAggregateOutputType = {
 
 export type UserMinAggregateOutputType = {
   id: string | null
+  username: string | null
   balance: number | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
+  username: string | null
   balance: number | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
+  username: number
   balance: number
   _all: number
 }
@@ -61,16 +64,19 @@ export type UserSumAggregateInputType = {
 
 export type UserMinAggregateInputType = {
   id?: true
+  username?: true
   balance?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
+  username?: true
   balance?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
+  username?: true
   balance?: true
   _all?: true
 }
@@ -163,6 +169,7 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: string
+  username: string
   balance: number
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
@@ -191,14 +198,18 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
+  username?: Prisma.StringFilter<"User"> | string
   balance?: Prisma.IntFilter<"User"> | number
   bets?: Prisma.BetListRelationFilter
+  sessions?: Prisma.SessionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   bets?: Prisma.BetOrderByRelationAggregateInput
+  sessions?: Prisma.SessionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -206,12 +217,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
+  username?: Prisma.StringFilter<"User"> | string
   balance?: Prisma.IntFilter<"User"> | number
   bets?: Prisma.BetListRelationFilter
+  sessions?: Prisma.SessionListRelationFilter
 }, "id">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   balance?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
@@ -225,50 +239,63 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
+  username?: Prisma.StringWithAggregatesFilter<"User"> | string
   balance?: Prisma.IntWithAggregatesFilter<"User"> | number
 }
 
 export type UserCreateInput = {
   id: string
+  username: string
   balance?: number
   bets?: Prisma.BetCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id: string
+  username: string
   balance?: number
   bets?: Prisma.BetUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   bets?: Prisma.BetUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
   bets?: Prisma.BetUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id: string
+  username: string
   balance?: number
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   balance?: Prisma.SortOrder
 }
 
@@ -278,11 +305,13 @@ export type UserAvgOrderByAggregateInput = {
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   balance?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   balance?: Prisma.SortOrder
 }
 
@@ -307,6 +336,20 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type UserCreateNestedOneWithoutSessionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  upsert?: Prisma.UserUpsertWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSessionsInput, Prisma.UserUpdateWithoutSessionsInput>, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
 export type UserCreateNestedOneWithoutBetsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutBetsInput, Prisma.UserUncheckedCreateWithoutBetsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutBetsInput
@@ -321,14 +364,62 @@ export type UserUpdateOneRequiredWithoutBetsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBetsInput, Prisma.UserUpdateWithoutBetsInput>, Prisma.UserUncheckedUpdateWithoutBetsInput>
 }
 
+export type UserCreateWithoutSessionsInput = {
+  id: string
+  username: string
+  balance?: number
+  bets?: Prisma.BetCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSessionsInput = {
+  id: string
+  username: string
+  balance?: number
+  bets?: Prisma.BetUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSessionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+}
+
+export type UserUpsertWithoutSessionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSessionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
+export type UserUpdateWithoutSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  bets?: Prisma.BetUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  bets?: Prisma.BetUncheckedUpdateManyWithoutUserNestedInput
+}
+
 export type UserCreateWithoutBetsInput = {
   id: string
+  username: string
   balance?: number
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBetsInput = {
   id: string
+  username: string
   balance?: number
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBetsInput = {
@@ -349,12 +440,16 @@ export type UserUpdateToOneWithWhereWithoutBetsInput = {
 
 export type UserUpdateWithoutBetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBetsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -364,10 +459,12 @@ export type UserUncheckedUpdateWithoutBetsInput = {
 
 export type UserCountOutputType = {
   bets: number
+  sessions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bets?: boolean | UserCountOutputTypeCountBetsArgs
+  sessions?: boolean | UserCountOutputTypeCountSessionsArgs
 }
 
 /**
@@ -387,32 +484,45 @@ export type UserCountOutputTypeCountBetsArgs<ExtArgs extends runtime.Types.Exten
   where?: Prisma.BetWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  username?: boolean
   balance?: boolean
   bets?: boolean | Prisma.User$betsArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  username?: boolean
   balance?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  username?: boolean
   balance?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
+  username?: boolean
   balance?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "balance", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "balance", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bets?: boolean | Prisma.User$betsArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -422,9 +532,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     bets: Prisma.$BetPayload<ExtArgs>[]
+    sessions: Prisma.$SessionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    username: string
     balance: number
   }, ExtArgs["result"]["user"]>
   composites: {}
@@ -821,6 +933,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   bets<T extends Prisma.User$betsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$betsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -851,6 +964,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
+  readonly username: Prisma.FieldRef<"User", 'String'>
   readonly balance: Prisma.FieldRef<"User", 'Int'>
 }
     
@@ -1261,6 +1375,30 @@ export type User$betsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   take?: number
   skip?: number
   distinct?: Prisma.BetScalarFieldEnum | Prisma.BetScalarFieldEnum[]
+}
+
+/**
+ * User.sessions
+ */
+export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Session
+   */
+  select?: Prisma.SessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Session
+   */
+  omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  where?: Prisma.SessionWhereInput
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[]
+  cursor?: Prisma.SessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
 }
 
 /**

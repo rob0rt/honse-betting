@@ -3,9 +3,12 @@
 	import { getAccessToken } from './context.js';
 	import { getUser } from './user.remote.js';
 	import BetsTable from '$lib/components/bets-table.svelte';
+	import type { PageProps } from './$types.js';
 
 	const access_token = getAccessToken();
 	const user = await getUser(access_token);
+
+	const { data }: PageProps = $props();
 </script>
 
 <div class="flex flex-1 flex-col">

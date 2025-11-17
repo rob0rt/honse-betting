@@ -50,6 +50,7 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 export const ModelName = {
   User: 'User',
+  Session: 'Session',
   Race: 'Race',
   Bet: 'Bet'
 } as const
@@ -72,10 +73,22 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
+  username: 'username',
   balance: 'balance'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const RaceScalarFieldEnum = {
