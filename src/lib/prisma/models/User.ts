@@ -39,6 +39,7 @@ export type UserMinAggregateOutputType = {
   username: string | null
   avatar: string | null
   balance: number | null
+  admin: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -46,6 +47,7 @@ export type UserMaxAggregateOutputType = {
   username: string | null
   avatar: string | null
   balance: number | null
+  admin: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -53,6 +55,7 @@ export type UserCountAggregateOutputType = {
   username: number
   avatar: number
   balance: number
+  admin: number
   _all: number
 }
 
@@ -70,6 +73,7 @@ export type UserMinAggregateInputType = {
   username?: true
   avatar?: true
   balance?: true
+  admin?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -77,6 +81,7 @@ export type UserMaxAggregateInputType = {
   username?: true
   avatar?: true
   balance?: true
+  admin?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type UserCountAggregateInputType = {
   username?: true
   avatar?: true
   balance?: true
+  admin?: true
   _all?: true
 }
 
@@ -178,6 +184,7 @@ export type UserGroupByOutputType = {
   username: string
   avatar: string | null
   balance: number
+  admin: boolean
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -208,6 +215,7 @@ export type UserWhereInput = {
   username?: Prisma.StringFilter<"User"> | string
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   balance?: Prisma.IntFilter<"User"> | number
+  admin?: Prisma.BoolFilter<"User"> | boolean
   bets?: Prisma.BetListRelationFilter
 }
 
@@ -216,6 +224,7 @@ export type UserOrderByWithRelationInput = {
   username?: Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   balance?: Prisma.SortOrder
+  admin?: Prisma.SortOrder
   bets?: Prisma.BetOrderByRelationAggregateInput
 }
 
@@ -227,6 +236,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   username?: Prisma.StringFilter<"User"> | string
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   balance?: Prisma.IntFilter<"User"> | number
+  admin?: Prisma.BoolFilter<"User"> | boolean
   bets?: Prisma.BetListRelationFilter
 }, "id">
 
@@ -235,6 +245,7 @@ export type UserOrderByWithAggregationInput = {
   username?: Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   balance?: Prisma.SortOrder
+  admin?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -250,6 +261,7 @@ export type UserScalarWhereWithAggregatesInput = {
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   balance?: Prisma.IntWithAggregatesFilter<"User"> | number
+  admin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
 }
 
 export type UserCreateInput = {
@@ -257,6 +269,7 @@ export type UserCreateInput = {
   username: string
   avatar?: string | null
   balance?: number
+  admin?: boolean
   bets?: Prisma.BetCreateNestedManyWithoutUserInput
 }
 
@@ -265,6 +278,7 @@ export type UserUncheckedCreateInput = {
   username: string
   avatar?: string | null
   balance?: number
+  admin?: boolean
   bets?: Prisma.BetUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -273,6 +287,7 @@ export type UserUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   bets?: Prisma.BetUpdateManyWithoutUserNestedInput
 }
 
@@ -281,6 +296,7 @@ export type UserUncheckedUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   bets?: Prisma.BetUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -289,6 +305,7 @@ export type UserCreateManyInput = {
   username: string
   avatar?: string | null
   balance?: number
+  admin?: boolean
 }
 
 export type UserUpdateManyMutationInput = {
@@ -296,6 +313,7 @@ export type UserUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -303,6 +321,7 @@ export type UserUncheckedUpdateManyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -310,6 +329,7 @@ export type UserCountOrderByAggregateInput = {
   username?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   balance?: Prisma.SortOrder
+  admin?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
@@ -321,6 +341,7 @@ export type UserMaxOrderByAggregateInput = {
   username?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   balance?: Prisma.SortOrder
+  admin?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -328,6 +349,7 @@ export type UserMinOrderByAggregateInput = {
   username?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   balance?: Prisma.SortOrder
+  admin?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
@@ -355,6 +377,10 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type UserCreateNestedOneWithoutBetsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutBetsInput, Prisma.UserUncheckedCreateWithoutBetsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutBetsInput
@@ -374,6 +400,7 @@ export type UserCreateWithoutBetsInput = {
   username: string
   avatar?: string | null
   balance?: number
+  admin?: boolean
 }
 
 export type UserUncheckedCreateWithoutBetsInput = {
@@ -381,6 +408,7 @@ export type UserUncheckedCreateWithoutBetsInput = {
   username: string
   avatar?: string | null
   balance?: number
+  admin?: boolean
 }
 
 export type UserCreateOrConnectWithoutBetsInput = {
@@ -404,6 +432,7 @@ export type UserUpdateWithoutBetsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserUncheckedUpdateWithoutBetsInput = {
@@ -411,6 +440,7 @@ export type UserUncheckedUpdateWithoutBetsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   balance?: Prisma.IntFieldUpdateOperationsInput | number
+  admin?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -449,6 +479,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   username?: boolean
   avatar?: boolean
   balance?: boolean
+  admin?: boolean
   bets?: boolean | Prisma.User$betsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -458,6 +489,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   username?: boolean
   avatar?: boolean
   balance?: boolean
+  admin?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -465,6 +497,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   username?: boolean
   avatar?: boolean
   balance?: boolean
+  admin?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -472,9 +505,10 @@ export type UserSelectScalar = {
   username?: boolean
   avatar?: boolean
   balance?: boolean
+  admin?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "avatar" | "balance", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "avatar" | "balance" | "admin", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bets?: boolean | Prisma.User$betsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -492,6 +526,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     username: string
     avatar: string | null
     balance: number
+    admin: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -920,6 +955,7 @@ export interface UserFieldRefs {
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly avatar: Prisma.FieldRef<"User", 'String'>
   readonly balance: Prisma.FieldRef<"User", 'Int'>
+  readonly admin: Prisma.FieldRef<"User", 'Boolean'>
 }
     
 

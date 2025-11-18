@@ -223,7 +223,7 @@
 
 <div class="flex items-center justify-between px-4 lg:px-6">
 	<div class="flex items-center gap-2">
-		<Button variant="outline" size="sm">
+		<Button variant="outline" size="sm" href="/bet/new">
 			<PlusIcon />
 			<span class="lg:inline">Place Bet</span>
 		</Button>
