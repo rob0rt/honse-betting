@@ -1,4 +1,4 @@
-import { BetType } from '$lib/server/db/enums';
+import { BetType } from '$lib/prisma/enums';
 import * as v from 'valibot';
 
 // Win, Place, Show

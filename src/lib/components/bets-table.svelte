@@ -1,17 +1,6 @@
 <script lang="ts" module>
 	import * as v from 'valibot';
 
-	function getTotalBetAmount(bet: Bet): number {
-		const b = v.parse(BetDataSchema, bet);
-		if (b.type === BetType.EXACTA && b.data.box) {
-			return bet.amount * 2;
-		} else if (b.type === BetType.TRIFECTA && b.data.box) {
-			return bet.amount * 6;
-		}
-
-		return bet.amount;
-	}
-
 	export const columns: ColumnDef<Bet>[] = [
 		{
 			accessorKey: 'type',
@@ -127,7 +116,7 @@
 	import DataTableCellViewer from './data-table-cell-viewer.svelte';
 	import { createRawSnippet } from 'svelte';
 	// import type { BetModel as Bet } from '$lib/server/db/models';
-	import { BetType, type Bet } from '$lib/server/db/client';
+	import { BetType, type Bet } from '$lib/prisma/browser';
 	import { BetDataSchema } from '$lib/schemas/bet.js';
 
 	let { bets }: { bets: Bet[] } = $props();

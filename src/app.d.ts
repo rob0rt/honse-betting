@@ -3,7 +3,10 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			session: import('$lib/server/session').Session | null;
+			user: import('$lib/prisma/client').User | null;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

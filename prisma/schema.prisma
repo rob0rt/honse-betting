@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/lib/server/db"
+  provider   = "prisma-client"
+  output     = "../src/lib/prisma"
+  engineType = "client"
 }
 
 datasource db {
@@ -9,9 +10,11 @@ datasource db {
 }
 
 model User {
-  id      String @id
-  balance Int    @default(0)
-  bets    Bet[]
+  id       String  @id
+  username String
+  avatar   String?
+  balance  Int     @default(0)
+  bets     Bet[]
 }
 
 model Race {
@@ -28,7 +31,7 @@ enum BetType {
 }
 
 model Bet {
-  id     Int    @id @default(autoincrement())
+  id     Int @id @default(autoincrement())
   amount Int
 
   userId String
@@ -37,6 +40,6 @@ model Bet {
   type BetType
   data Json
 
-  user   User   @relation(fields: [userId], references: [id])
-  race   Race   @relation(fields: [raceId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  race Race @relation(fields: [raceId], references: [id])
 }
