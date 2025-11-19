@@ -29,31 +29,36 @@ export type AggregateRaceHorse = {
 export type RaceHorseAvgAggregateOutputType = {
   raceId: number | null
   horseId: number | null
-  position: number | null
+  saddleNumber: number | null
+  place: number | null
 }
 
 export type RaceHorseSumAggregateOutputType = {
   raceId: number | null
   horseId: number | null
-  position: number | null
+  saddleNumber: number | null
+  place: number | null
 }
 
 export type RaceHorseMinAggregateOutputType = {
   raceId: number | null
   horseId: number | null
-  position: number | null
+  saddleNumber: number | null
+  place: number | null
 }
 
 export type RaceHorseMaxAggregateOutputType = {
   raceId: number | null
   horseId: number | null
-  position: number | null
+  saddleNumber: number | null
+  place: number | null
 }
 
 export type RaceHorseCountAggregateOutputType = {
   raceId: number
   horseId: number
-  position: number
+  saddleNumber: number
+  place: number
   _all: number
 }
 
@@ -61,31 +66,36 @@ export type RaceHorseCountAggregateOutputType = {
 export type RaceHorseAvgAggregateInputType = {
   raceId?: true
   horseId?: true
-  position?: true
+  saddleNumber?: true
+  place?: true
 }
 
 export type RaceHorseSumAggregateInputType = {
   raceId?: true
   horseId?: true
-  position?: true
+  saddleNumber?: true
+  place?: true
 }
 
 export type RaceHorseMinAggregateInputType = {
   raceId?: true
   horseId?: true
-  position?: true
+  saddleNumber?: true
+  place?: true
 }
 
 export type RaceHorseMaxAggregateInputType = {
   raceId?: true
   horseId?: true
-  position?: true
+  saddleNumber?: true
+  place?: true
 }
 
 export type RaceHorseCountAggregateInputType = {
   raceId?: true
   horseId?: true
-  position?: true
+  saddleNumber?: true
+  place?: true
   _all?: true
 }
 
@@ -178,7 +188,8 @@ export type RaceHorseGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type RaceHorseGroupByOutputType = {
   raceId: number
   horseId: number
-  position: number
+  saddleNumber: number
+  place: number | null
   _count: RaceHorseCountAggregateOutputType | null
   _avg: RaceHorseAvgAggregateOutputType | null
   _sum: RaceHorseSumAggregateOutputType | null
@@ -207,7 +218,8 @@ export type RaceHorseWhereInput = {
   NOT?: Prisma.RaceHorseWhereInput | Prisma.RaceHorseWhereInput[]
   raceId?: Prisma.IntFilter<"RaceHorse"> | number
   horseId?: Prisma.IntFilter<"RaceHorse"> | number
-  position?: Prisma.IntFilter<"RaceHorse"> | number
+  saddleNumber?: Prisma.IntFilter<"RaceHorse"> | number
+  place?: Prisma.IntNullableFilter<"RaceHorse"> | number | null
   race?: Prisma.XOR<Prisma.RaceScalarRelationFilter, Prisma.RaceWhereInput>
   horse?: Prisma.XOR<Prisma.HorseScalarRelationFilter, Prisma.HorseWhereInput>
 }
@@ -215,28 +227,31 @@ export type RaceHorseWhereInput = {
 export type RaceHorseOrderByWithRelationInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrderInput | Prisma.SortOrder
   race?: Prisma.RaceOrderByWithRelationInput
   horse?: Prisma.HorseOrderByWithRelationInput
 }
 
 export type RaceHorseWhereUniqueInput = Prisma.AtLeast<{
-  raceId_position?: Prisma.RaceHorseRaceIdPositionCompoundUniqueInput
+  raceId_saddleNumber?: Prisma.RaceHorseRaceIdSaddleNumberCompoundUniqueInput
   raceId_horseId?: Prisma.RaceHorseRaceIdHorseIdCompoundUniqueInput
   AND?: Prisma.RaceHorseWhereInput | Prisma.RaceHorseWhereInput[]
   OR?: Prisma.RaceHorseWhereInput[]
   NOT?: Prisma.RaceHorseWhereInput | Prisma.RaceHorseWhereInput[]
   raceId?: Prisma.IntFilter<"RaceHorse"> | number
   horseId?: Prisma.IntFilter<"RaceHorse"> | number
-  position?: Prisma.IntFilter<"RaceHorse"> | number
+  saddleNumber?: Prisma.IntFilter<"RaceHorse"> | number
+  place?: Prisma.IntNullableFilter<"RaceHorse"> | number | null
   race?: Prisma.XOR<Prisma.RaceScalarRelationFilter, Prisma.RaceWhereInput>
   horse?: Prisma.XOR<Prisma.HorseScalarRelationFilter, Prisma.HorseWhereInput>
-}, "raceId_horseId" | "raceId_position">
+}, "raceId_horseId" | "raceId_saddleNumber">
 
 export type RaceHorseOrderByWithAggregationInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.RaceHorseCountOrderByAggregateInput
   _avg?: Prisma.RaceHorseAvgOrderByAggregateInput
   _max?: Prisma.RaceHorseMaxOrderByAggregateInput
@@ -250,11 +265,13 @@ export type RaceHorseScalarWhereWithAggregatesInput = {
   NOT?: Prisma.RaceHorseScalarWhereWithAggregatesInput | Prisma.RaceHorseScalarWhereWithAggregatesInput[]
   raceId?: Prisma.IntWithAggregatesFilter<"RaceHorse"> | number
   horseId?: Prisma.IntWithAggregatesFilter<"RaceHorse"> | number
-  position?: Prisma.IntWithAggregatesFilter<"RaceHorse"> | number
+  saddleNumber?: Prisma.IntWithAggregatesFilter<"RaceHorse"> | number
+  place?: Prisma.IntNullableWithAggregatesFilter<"RaceHorse"> | number | null
 }
 
 export type RaceHorseCreateInput = {
-  position: number
+  saddleNumber: number
+  place?: number | null
   race: Prisma.RaceCreateNestedOneWithoutHorsesInput
   horse: Prisma.HorseCreateNestedOneWithoutRacesInput
 }
@@ -262,11 +279,13 @@ export type RaceHorseCreateInput = {
 export type RaceHorseUncheckedCreateInput = {
   raceId: number
   horseId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseUpdateInput = {
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   race?: Prisma.RaceUpdateOneRequiredWithoutHorsesNestedInput
   horse?: Prisma.HorseUpdateOneRequiredWithoutRacesNestedInput
 }
@@ -274,23 +293,27 @@ export type RaceHorseUpdateInput = {
 export type RaceHorseUncheckedUpdateInput = {
   raceId?: Prisma.IntFieldUpdateOperationsInput | number
   horseId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseCreateManyInput = {
   raceId: number
   horseId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseUpdateManyMutationInput = {
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseUncheckedUpdateManyInput = {
   raceId?: Prisma.IntFieldUpdateOperationsInput | number
   horseId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseListRelationFilter = {
@@ -303,9 +326,9 @@ export type RaceHorseOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RaceHorseRaceIdPositionCompoundUniqueInput = {
+export type RaceHorseRaceIdSaddleNumberCompoundUniqueInput = {
   raceId: number
-  position: number
+  saddleNumber: number
 }
 
 export type RaceHorseRaceIdHorseIdCompoundUniqueInput = {
@@ -316,31 +339,36 @@ export type RaceHorseRaceIdHorseIdCompoundUniqueInput = {
 export type RaceHorseCountOrderByAggregateInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrder
 }
 
 export type RaceHorseAvgOrderByAggregateInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrder
 }
 
 export type RaceHorseMaxOrderByAggregateInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrder
 }
 
 export type RaceHorseMinOrderByAggregateInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrder
 }
 
 export type RaceHorseSumOrderByAggregateInput = {
   raceId?: Prisma.SortOrder
   horseId?: Prisma.SortOrder
-  position?: Prisma.SortOrder
+  saddleNumber?: Prisma.SortOrder
+  place?: Prisma.SortOrder
 }
 
 export type RaceHorseCreateNestedManyWithoutRaceInput = {
@@ -427,14 +455,24 @@ export type RaceHorseUncheckedUpdateManyWithoutHorseNestedInput = {
   deleteMany?: Prisma.RaceHorseScalarWhereInput | Prisma.RaceHorseScalarWhereInput[]
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type RaceHorseCreateWithoutRaceInput = {
-  position: number
+  saddleNumber: number
+  place?: number | null
   horse: Prisma.HorseCreateNestedOneWithoutRacesInput
 }
 
 export type RaceHorseUncheckedCreateWithoutRaceInput = {
   horseId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseCreateOrConnectWithoutRaceInput = {
@@ -469,17 +507,20 @@ export type RaceHorseScalarWhereInput = {
   NOT?: Prisma.RaceHorseScalarWhereInput | Prisma.RaceHorseScalarWhereInput[]
   raceId?: Prisma.IntFilter<"RaceHorse"> | number
   horseId?: Prisma.IntFilter<"RaceHorse"> | number
-  position?: Prisma.IntFilter<"RaceHorse"> | number
+  saddleNumber?: Prisma.IntFilter<"RaceHorse"> | number
+  place?: Prisma.IntNullableFilter<"RaceHorse"> | number | null
 }
 
 export type RaceHorseCreateWithoutHorseInput = {
-  position: number
+  saddleNumber: number
+  place?: number | null
   race: Prisma.RaceCreateNestedOneWithoutHorsesInput
 }
 
 export type RaceHorseUncheckedCreateWithoutHorseInput = {
   raceId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseCreateOrConnectWithoutHorseInput = {
@@ -510,42 +551,50 @@ export type RaceHorseUpdateManyWithWhereWithoutHorseInput = {
 
 export type RaceHorseCreateManyRaceInput = {
   horseId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseUpdateWithoutRaceInput = {
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   horse?: Prisma.HorseUpdateOneRequiredWithoutRacesNestedInput
 }
 
 export type RaceHorseUncheckedUpdateWithoutRaceInput = {
   horseId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseUncheckedUpdateManyWithoutRaceInput = {
   horseId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseCreateManyHorseInput = {
   raceId: number
-  position: number
+  saddleNumber: number
+  place?: number | null
 }
 
 export type RaceHorseUpdateWithoutHorseInput = {
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   race?: Prisma.RaceUpdateOneRequiredWithoutHorsesNestedInput
 }
 
 export type RaceHorseUncheckedUpdateWithoutHorseInput = {
   raceId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type RaceHorseUncheckedUpdateManyWithoutHorseInput = {
   raceId?: Prisma.IntFieldUpdateOperationsInput | number
-  position?: Prisma.IntFieldUpdateOperationsInput | number
+  saddleNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  place?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -553,7 +602,8 @@ export type RaceHorseUncheckedUpdateManyWithoutHorseInput = {
 export type RaceHorseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   raceId?: boolean
   horseId?: boolean
-  position?: boolean
+  saddleNumber?: boolean
+  place?: boolean
   race?: boolean | Prisma.RaceDefaultArgs<ExtArgs>
   horse?: boolean | Prisma.HorseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["raceHorse"]>
@@ -561,7 +611,8 @@ export type RaceHorseSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type RaceHorseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   raceId?: boolean
   horseId?: boolean
-  position?: boolean
+  saddleNumber?: boolean
+  place?: boolean
   race?: boolean | Prisma.RaceDefaultArgs<ExtArgs>
   horse?: boolean | Prisma.HorseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["raceHorse"]>
@@ -569,7 +620,8 @@ export type RaceHorseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type RaceHorseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   raceId?: boolean
   horseId?: boolean
-  position?: boolean
+  saddleNumber?: boolean
+  place?: boolean
   race?: boolean | Prisma.RaceDefaultArgs<ExtArgs>
   horse?: boolean | Prisma.HorseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["raceHorse"]>
@@ -577,10 +629,11 @@ export type RaceHorseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type RaceHorseSelectScalar = {
   raceId?: boolean
   horseId?: boolean
-  position?: boolean
+  saddleNumber?: boolean
+  place?: boolean
 }
 
-export type RaceHorseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"raceId" | "horseId" | "position", ExtArgs["result"]["raceHorse"]>
+export type RaceHorseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"raceId" | "horseId" | "saddleNumber" | "place", ExtArgs["result"]["raceHorse"]>
 export type RaceHorseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   race?: boolean | Prisma.RaceDefaultArgs<ExtArgs>
   horse?: boolean | Prisma.HorseDefaultArgs<ExtArgs>
@@ -603,7 +656,8 @@ export type $RaceHorsePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     raceId: number
     horseId: number
-    position: number
+    saddleNumber: number
+    place: number | null
   }, ExtArgs["result"]["raceHorse"]>
   composites: {}
 }
@@ -1031,7 +1085,8 @@ export interface Prisma__RaceHorseClient<T, Null = never, ExtArgs extends runtim
 export interface RaceHorseFieldRefs {
   readonly raceId: Prisma.FieldRef<"RaceHorse", 'Int'>
   readonly horseId: Prisma.FieldRef<"RaceHorse", 'Int'>
-  readonly position: Prisma.FieldRef<"RaceHorse", 'Int'>
+  readonly saddleNumber: Prisma.FieldRef<"RaceHorse", 'Int'>
+  readonly place: Prisma.FieldRef<"RaceHorse", 'Int'>
 }
     
 

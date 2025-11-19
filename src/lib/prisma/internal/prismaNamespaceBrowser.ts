@@ -102,7 +102,8 @@ export type HorseScalarFieldEnum = (typeof HorseScalarFieldEnum)[keyof typeof Ho
 export const RaceHorseScalarFieldEnum = {
   raceId: 'raceId',
   horseId: 'horseId',
-  position: 'position'
+  saddleNumber: 'saddleNumber',
+  place: 'place'
 } as const
 
 export type RaceHorseScalarFieldEnum = (typeof RaceHorseScalarFieldEnum)[keyof typeof RaceHorseScalarFieldEnum]

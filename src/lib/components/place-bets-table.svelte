@@ -39,9 +39,9 @@
 			enableHiding: false
 		},
 		{
-			accessorKey: 'position',
-			header: 'Position',
-			cell: ({ row }) => row.original.position,
+			accessorKey: 'saddleNumber',
+			header: 'Saddle Number',
+			cell: ({ row }) => row.original.saddleNumber,
 			enableHiding: false
 		}
 	];

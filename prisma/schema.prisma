@@ -32,15 +32,16 @@ model Horse {
 }
 
 model RaceHorse {
-  raceId   Int
-  horseId  Int
-  position Int
+  raceId       Int
+  horseId      Int
+  saddleNumber Int
+  place        Int?
 
   race  Race  @relation(fields: [raceId], references: [id])
   horse Horse @relation(fields: [horseId], references: [id])
 
   @@id([raceId, horseId])
-  @@unique([raceId, position])
+  @@unique([raceId, saddleNumber])
   @@index(raceId)
 }
 

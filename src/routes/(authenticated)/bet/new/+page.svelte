@@ -23,12 +23,10 @@
 			case BetType.SHOW:
 				return (race!.horses.length * betAmount) / 3 + betAmount;
 			case BetType.EXACTA:
-				return race!.horses.length * betAmount + (race!.horses.length - 1) * betAmount + betAmount;
+				return race!.horses.length * race!.horses.length - 1 * betAmount + betAmount;
 			case BetType.TRIFECTA:
 				return (
-					race!.horses.length * betAmount +
-					(race!.horses.length - 1) * betAmount +
-					(race!.horses.length - 2) * betAmount +
+					race!.horses.length * (race!.horses.length - 1) * (race!.horses.length - 2) * betAmount +
 					betAmount
 				);
 		}
