@@ -19,8 +19,29 @@ model User {
 }
 
 model Race {
-  id   Int   @id @default(autoincrement())
-  bets Bet[]
+  id     Int         @id @default(autoincrement())
+  date   DateTime
+  bets   Bet[]
+  horses RaceHorse[]
+}
+
+model Horse {
+  id    Int         @id @default(autoincrement())
+  name  String
+  races RaceHorse[]
+}
+
+model RaceHorse {
+  raceId   Int
+  horseId  Int
+  position Int
+
+  race  Race  @relation(fields: [raceId], references: [id])
+  horse Horse @relation(fields: [horseId], references: [id])
+
+  @@id([raceId, horseId])
+  @@unique([raceId, position])
+  @@index(raceId)
 }
 
 enum BetType {

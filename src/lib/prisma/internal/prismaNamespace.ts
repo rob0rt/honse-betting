@@ -392,6 +392,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   User: 'User',
   Race: 'Race',
+  Horse: 'Horse',
+  RaceHorse: 'RaceHorse',
   Bet: 'Bet'
 } as const
 
@@ -408,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "race" | "bet"
+    modelProps: "user" | "race" | "horse" | "raceHorse" | "bet"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -560,6 +562,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Horse: {
+      payload: Prisma.$HorsePayload<ExtArgs>
+      fields: Prisma.HorseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.HorseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.HorseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        findFirst: {
+          args: Prisma.HorseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.HorseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        findMany: {
+          args: Prisma.HorseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>[]
+        }
+        create: {
+          args: Prisma.HorseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        createMany: {
+          args: Prisma.HorseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.HorseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>[]
+        }
+        delete: {
+          args: Prisma.HorseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        update: {
+          args: Prisma.HorseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        deleteMany: {
+          args: Prisma.HorseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.HorseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.HorseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>[]
+        }
+        upsert: {
+          args: Prisma.HorseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HorsePayload>
+        }
+        aggregate: {
+          args: Prisma.HorseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateHorse>
+        }
+        groupBy: {
+          args: Prisma.HorseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.HorseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.HorseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.HorseCountAggregateOutputType> | number
+        }
+      }
+    }
+    RaceHorse: {
+      payload: Prisma.$RaceHorsePayload<ExtArgs>
+      fields: Prisma.RaceHorseFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RaceHorseFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RaceHorseFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        findFirst: {
+          args: Prisma.RaceHorseFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RaceHorseFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        findMany: {
+          args: Prisma.RaceHorseFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>[]
+        }
+        create: {
+          args: Prisma.RaceHorseCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        createMany: {
+          args: Prisma.RaceHorseCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RaceHorseCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>[]
+        }
+        delete: {
+          args: Prisma.RaceHorseDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        update: {
+          args: Prisma.RaceHorseUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        deleteMany: {
+          args: Prisma.RaceHorseDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RaceHorseUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RaceHorseUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>[]
+        }
+        upsert: {
+          args: Prisma.RaceHorseUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RaceHorsePayload>
+        }
+        aggregate: {
+          args: Prisma.RaceHorseAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRaceHorse>
+        }
+        groupBy: {
+          args: Prisma.RaceHorseGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RaceHorseGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RaceHorseCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RaceHorseCountAggregateOutputType> | number
+        }
+      }
+    }
     Bet: {
       payload: Prisma.$BetPayload<ExtArgs>
       fields: Prisma.BetFieldRefs
@@ -685,10 +835,28 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 
 export const RaceScalarFieldEnum = {
-  id: 'id'
+  id: 'id',
+  date: 'date'
 } as const
 
 export type RaceScalarFieldEnum = (typeof RaceScalarFieldEnum)[keyof typeof RaceScalarFieldEnum]
+
+
+export const HorseScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type HorseScalarFieldEnum = (typeof HorseScalarFieldEnum)[keyof typeof HorseScalarFieldEnum]
+
+
+export const RaceHorseScalarFieldEnum = {
+  raceId: 'raceId',
+  horseId: 'horseId',
+  position: 'position'
+} as const
+
+export type RaceHorseScalarFieldEnum = (typeof RaceHorseScalarFieldEnum)[keyof typeof RaceHorseScalarFieldEnum]
 
 
 export const BetScalarFieldEnum = {
@@ -781,6 +949,20 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -914,6 +1096,8 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   race?: Prisma.RaceOmit
+  horse?: Prisma.HorseOmit
+  raceHorse?: Prisma.RaceHorseOmit
   bet?: Prisma.BetOmit
 }
 

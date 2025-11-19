@@ -55,8 +55,8 @@ const config: runtime.GetPrismaClientConfig = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider   = \"prisma-client\"\n  output     = \"../src/lib/prisma\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id       String  @id\n  username String\n  avatar   String?\n  balance  Int     @default(0)\n  admin    Boolean @default(false)\n  bets     Bet[]\n}\n\nmodel Race {\n  id   Int   @id @default(autoincrement())\n  bets Bet[]\n}\n\nenum BetType {\n  WIN\n  PLACE\n  SHOW\n  EXACTA\n  TRIFECTA\n}\n\nmodel Bet {\n  id     Int @id @default(autoincrement())\n  amount Int\n\n  userId String\n  raceId Int\n\n  type BetType\n  data Json\n\n  user User @relation(fields: [userId], references: [id])\n  race Race @relation(fields: [raceId], references: [id])\n}\n",
-  "inlineSchemaHash": "66a0279e7f6b460a64a0b8e7d399292b680b6600db0592f44e3fccf895ff0db1",
+  "inlineSchema": "generator client {\n  provider   = \"prisma-client\"\n  output     = \"../src/lib/prisma\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id       String  @id\n  username String\n  avatar   String?\n  balance  Int     @default(0)\n  admin    Boolean @default(false)\n  bets     Bet[]\n}\n\nmodel Race {\n  id     Int         @id @default(autoincrement())\n  date   DateTime\n  bets   Bet[]\n  horses RaceHorse[]\n}\n\nmodel Horse {\n  id    Int         @id @default(autoincrement())\n  name  String\n  races RaceHorse[]\n}\n\nmodel RaceHorse {\n  raceId   Int\n  horseId  Int\n  position Int\n\n  race  Race  @relation(fields: [raceId], references: [id])\n  horse Horse @relation(fields: [horseId], references: [id])\n\n  @@id([raceId, horseId])\n  @@unique([raceId, position])\n  @@index(raceId)\n}\n\nenum BetType {\n  WIN\n  PLACE\n  SHOW\n  EXACTA\n  TRIFECTA\n}\n\nmodel Bet {\n  id     Int @id @default(autoincrement())\n  amount Int\n\n  userId String\n  raceId Int\n\n  type BetType\n  data Json\n\n  user User @relation(fields: [userId], references: [id])\n  race Race @relation(fields: [raceId], references: [id])\n}\n",
+  "inlineSchemaHash": "e31e53da6643f53e97e50b65672063309057c7445690a831b59b3354e6201b91",
   "copyEngine": true,
   "runtimeDataModel": {
     "models": {},
@@ -66,7 +66,7 @@ const config: runtime.GetPrismaClientConfig = {
   "dirname": ""
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"balance\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"admin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"bets\",\"kind\":\"object\",\"type\":\"Bet\",\"relationName\":\"BetToUser\"}],\"dbName\":null},\"Race\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bets\",\"kind\":\"object\",\"type\":\"Bet\",\"relationName\":\"BetToRace\"}],\"dbName\":null},\"Bet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"amount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"raceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"BetType\"},{\"name\":\"data\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"BetToUser\"},{\"name\":\"race\",\"kind\":\"object\",\"type\":\"Race\",\"relationName\":\"BetToRace\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"balance\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"admin\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"bets\",\"kind\":\"object\",\"type\":\"Bet\",\"relationName\":\"BetToUser\"}],\"dbName\":null},\"Race\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"bets\",\"kind\":\"object\",\"type\":\"Bet\",\"relationName\":\"BetToRace\"},{\"name\":\"horses\",\"kind\":\"object\",\"type\":\"RaceHorse\",\"relationName\":\"RaceToRaceHorse\"}],\"dbName\":null},\"Horse\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"races\",\"kind\":\"object\",\"type\":\"RaceHorse\",\"relationName\":\"HorseToRaceHorse\"}],\"dbName\":null},\"RaceHorse\":{\"fields\":[{\"name\":\"raceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"horseId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"position\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"race\",\"kind\":\"object\",\"type\":\"Race\",\"relationName\":\"RaceToRaceHorse\"},{\"name\":\"horse\",\"kind\":\"object\",\"type\":\"Horse\",\"relationName\":\"HorseToRaceHorse\"}],\"dbName\":null},\"Bet\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"amount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"raceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"enum\",\"type\":\"BetType\"},{\"name\":\"data\",\"kind\":\"scalar\",\"type\":\"Json\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"BetToUser\"},{\"name\":\"race\",\"kind\":\"object\",\"type\":\"Race\",\"relationName\":\"BetToRace\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 config.engineWasm = undefined
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
@@ -234,6 +234,26 @@ export interface PrismaClient<
     * ```
     */
   get race(): Prisma.RaceDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.horse`: Exposes CRUD operations for the **Horse** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Horses
+    * const horses = await prisma.horse.findMany()
+    * ```
+    */
+  get horse(): Prisma.HorseDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.raceHorse`: Exposes CRUD operations for the **RaceHorse** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RaceHorses
+    * const raceHorses = await prisma.raceHorse.findMany()
+    * ```
+    */
+  get raceHorse(): Prisma.RaceHorseDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.bet`: Exposes CRUD operations for the **Bet** model.

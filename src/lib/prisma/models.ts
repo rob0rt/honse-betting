@@ -10,5 +10,7 @@
  */
 export type * from './models/User.ts'
 export type * from './models/Race.ts'
+export type * from './models/Horse.ts'
+export type * from './models/RaceHorse.ts'
 export type * from './models/Bet.ts'
 export type * from './commonInputTypes.ts'

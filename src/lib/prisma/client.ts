@@ -52,6 +52,16 @@ export type User = Prisma.UserModel
  */
 export type Race = Prisma.RaceModel
 /**
+ * Model Horse
+ * 
+ */
+export type Horse = Prisma.HorseModel
+/**
+ * Model RaceHorse
+ * 
+ */
+export type RaceHorse = Prisma.RaceHorseModel
+/**
  * Model Bet
  * 
  */

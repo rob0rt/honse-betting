@@ -51,6 +51,8 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   User: 'User',
   Race: 'Race',
+  Horse: 'Horse',
+  RaceHorse: 'RaceHorse',
   Bet: 'Bet'
 } as const
 
@@ -82,10 +84,28 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 
 export const RaceScalarFieldEnum = {
-  id: 'id'
+  id: 'id',
+  date: 'date'
 } as const
 
 export type RaceScalarFieldEnum = (typeof RaceScalarFieldEnum)[keyof typeof RaceScalarFieldEnum]
+
+
+export const HorseScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type HorseScalarFieldEnum = (typeof HorseScalarFieldEnum)[keyof typeof HorseScalarFieldEnum]
+
+
+export const RaceHorseScalarFieldEnum = {
+  raceId: 'raceId',
+  horseId: 'horseId',
+  position: 'position'
+} as const
+
+export type RaceHorseScalarFieldEnum = (typeof RaceHorseScalarFieldEnum)[keyof typeof RaceHorseScalarFieldEnum]
 
 
 export const BetScalarFieldEnum = {

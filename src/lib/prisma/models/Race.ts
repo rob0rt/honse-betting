@@ -36,14 +36,17 @@ export type RaceSumAggregateOutputType = {
 
 export type RaceMinAggregateOutputType = {
   id: number | null
+  date: Date | null
 }
 
 export type RaceMaxAggregateOutputType = {
   id: number | null
+  date: Date | null
 }
 
 export type RaceCountAggregateOutputType = {
   id: number
+  date: number
   _all: number
 }
 
@@ -58,14 +61,17 @@ export type RaceSumAggregateInputType = {
 
 export type RaceMinAggregateInputType = {
   id?: true
+  date?: true
 }
 
 export type RaceMaxAggregateInputType = {
   id?: true
+  date?: true
 }
 
 export type RaceCountAggregateInputType = {
   id?: true
+  date?: true
   _all?: true
 }
 
@@ -157,6 +163,7 @@ export type RaceGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type RaceGroupByOutputType = {
   id: number
+  date: Date
   _count: RaceCountAggregateOutputType | null
   _avg: RaceAvgAggregateOutputType | null
   _sum: RaceSumAggregateOutputType | null
@@ -184,12 +191,16 @@ export type RaceWhereInput = {
   OR?: Prisma.RaceWhereInput[]
   NOT?: Prisma.RaceWhereInput | Prisma.RaceWhereInput[]
   id?: Prisma.IntFilter<"Race"> | number
+  date?: Prisma.DateTimeFilter<"Race"> | Date | string
   bets?: Prisma.BetListRelationFilter
+  horses?: Prisma.RaceHorseListRelationFilter
 }
 
 export type RaceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   bets?: Prisma.BetOrderByRelationAggregateInput
+  horses?: Prisma.RaceHorseOrderByRelationAggregateInput
 }
 
 export type RaceWhereUniqueInput = Prisma.AtLeast<{
@@ -197,11 +208,14 @@ export type RaceWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.RaceWhereInput | Prisma.RaceWhereInput[]
   OR?: Prisma.RaceWhereInput[]
   NOT?: Prisma.RaceWhereInput | Prisma.RaceWhereInput[]
+  date?: Prisma.DateTimeFilter<"Race"> | Date | string
   bets?: Prisma.BetListRelationFilter
+  horses?: Prisma.RaceHorseListRelationFilter
 }, "id">
 
 export type RaceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   _count?: Prisma.RaceCountOrderByAggregateInput
   _avg?: Prisma.RaceAvgOrderByAggregateInput
   _max?: Prisma.RaceMaxOrderByAggregateInput
@@ -214,40 +228,52 @@ export type RaceScalarWhereWithAggregatesInput = {
   OR?: Prisma.RaceScalarWhereWithAggregatesInput[]
   NOT?: Prisma.RaceScalarWhereWithAggregatesInput | Prisma.RaceScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Race"> | number
+  date?: Prisma.DateTimeWithAggregatesFilter<"Race"> | Date | string
 }
 
 export type RaceCreateInput = {
+  date: Date | string
   bets?: Prisma.BetCreateNestedManyWithoutRaceInput
+  horses?: Prisma.RaceHorseCreateNestedManyWithoutRaceInput
 }
 
 export type RaceUncheckedCreateInput = {
   id?: number
+  date: Date | string
   bets?: Prisma.BetUncheckedCreateNestedManyWithoutRaceInput
+  horses?: Prisma.RaceHorseUncheckedCreateNestedManyWithoutRaceInput
 }
 
 export type RaceUpdateInput = {
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bets?: Prisma.BetUpdateManyWithoutRaceNestedInput
+  horses?: Prisma.RaceHorseUpdateManyWithoutRaceNestedInput
 }
 
 export type RaceUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bets?: Prisma.BetUncheckedUpdateManyWithoutRaceNestedInput
+  horses?: Prisma.RaceHorseUncheckedUpdateManyWithoutRaceNestedInput
 }
 
 export type RaceCreateManyInput = {
   id?: number
+  date: Date | string
 }
 
 export type RaceUpdateManyMutationInput = {
-
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RaceUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RaceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
 }
 
 export type RaceAvgOrderByAggregateInput = {
@@ -256,10 +282,12 @@ export type RaceAvgOrderByAggregateInput = {
 
 export type RaceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
 }
 
 export type RaceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  date?: Prisma.SortOrder
 }
 
 export type RaceSumOrderByAggregateInput = {
@@ -269,6 +297,24 @@ export type RaceSumOrderByAggregateInput = {
 export type RaceScalarRelationFilter = {
   is?: Prisma.RaceWhereInput
   isNot?: Prisma.RaceWhereInput
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type RaceCreateNestedOneWithoutHorsesInput = {
+  create?: Prisma.XOR<Prisma.RaceCreateWithoutHorsesInput, Prisma.RaceUncheckedCreateWithoutHorsesInput>
+  connectOrCreate?: Prisma.RaceCreateOrConnectWithoutHorsesInput
+  connect?: Prisma.RaceWhereUniqueInput
+}
+
+export type RaceUpdateOneRequiredWithoutHorsesNestedInput = {
+  create?: Prisma.XOR<Prisma.RaceCreateWithoutHorsesInput, Prisma.RaceUncheckedCreateWithoutHorsesInput>
+  connectOrCreate?: Prisma.RaceCreateOrConnectWithoutHorsesInput
+  upsert?: Prisma.RaceUpsertWithoutHorsesInput
+  connect?: Prisma.RaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RaceUpdateToOneWithWhereWithoutHorsesInput, Prisma.RaceUpdateWithoutHorsesInput>, Prisma.RaceUncheckedUpdateWithoutHorsesInput>
 }
 
 export type RaceCreateNestedOneWithoutBetsInput = {
@@ -285,12 +331,53 @@ export type RaceUpdateOneRequiredWithoutBetsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RaceUpdateToOneWithWhereWithoutBetsInput, Prisma.RaceUpdateWithoutBetsInput>, Prisma.RaceUncheckedUpdateWithoutBetsInput>
 }
 
-export type RaceCreateWithoutBetsInput = {
+export type RaceCreateWithoutHorsesInput = {
+  date: Date | string
+  bets?: Prisma.BetCreateNestedManyWithoutRaceInput
+}
 
+export type RaceUncheckedCreateWithoutHorsesInput = {
+  id?: number
+  date: Date | string
+  bets?: Prisma.BetUncheckedCreateNestedManyWithoutRaceInput
+}
+
+export type RaceCreateOrConnectWithoutHorsesInput = {
+  where: Prisma.RaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.RaceCreateWithoutHorsesInput, Prisma.RaceUncheckedCreateWithoutHorsesInput>
+}
+
+export type RaceUpsertWithoutHorsesInput = {
+  update: Prisma.XOR<Prisma.RaceUpdateWithoutHorsesInput, Prisma.RaceUncheckedUpdateWithoutHorsesInput>
+  create: Prisma.XOR<Prisma.RaceCreateWithoutHorsesInput, Prisma.RaceUncheckedCreateWithoutHorsesInput>
+  where?: Prisma.RaceWhereInput
+}
+
+export type RaceUpdateToOneWithWhereWithoutHorsesInput = {
+  where?: Prisma.RaceWhereInput
+  data: Prisma.XOR<Prisma.RaceUpdateWithoutHorsesInput, Prisma.RaceUncheckedUpdateWithoutHorsesInput>
+}
+
+export type RaceUpdateWithoutHorsesInput = {
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bets?: Prisma.BetUpdateManyWithoutRaceNestedInput
+}
+
+export type RaceUncheckedUpdateWithoutHorsesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bets?: Prisma.BetUncheckedUpdateManyWithoutRaceNestedInput
+}
+
+export type RaceCreateWithoutBetsInput = {
+  date: Date | string
+  horses?: Prisma.RaceHorseCreateNestedManyWithoutRaceInput
 }
 
 export type RaceUncheckedCreateWithoutBetsInput = {
   id?: number
+  date: Date | string
+  horses?: Prisma.RaceHorseUncheckedCreateNestedManyWithoutRaceInput
 }
 
 export type RaceCreateOrConnectWithoutBetsInput = {
@@ -310,11 +397,14 @@ export type RaceUpdateToOneWithWhereWithoutBetsInput = {
 }
 
 export type RaceUpdateWithoutBetsInput = {
-
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  horses?: Prisma.RaceHorseUpdateManyWithoutRaceNestedInput
 }
 
 export type RaceUncheckedUpdateWithoutBetsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  horses?: Prisma.RaceHorseUncheckedUpdateManyWithoutRaceNestedInput
 }
 
 
@@ -324,10 +414,12 @@ export type RaceUncheckedUpdateWithoutBetsInput = {
 
 export type RaceCountOutputType = {
   bets: number
+  horses: number
 }
 
 export type RaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bets?: boolean | RaceCountOutputTypeCountBetsArgs
+  horses?: boolean | RaceCountOutputTypeCountHorsesArgs
 }
 
 /**
@@ -347,28 +439,41 @@ export type RaceCountOutputTypeCountBetsArgs<ExtArgs extends runtime.Types.Exten
   where?: Prisma.BetWhereInput
 }
 
+/**
+ * RaceCountOutputType without action
+ */
+export type RaceCountOutputTypeCountHorsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RaceHorseWhereInput
+}
+
 
 export type RaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  date?: boolean
   bets?: boolean | Prisma.Race$betsArgs<ExtArgs>
+  horses?: boolean | Prisma.Race$horsesArgs<ExtArgs>
   _count?: boolean | Prisma.RaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["race"]>
 
 export type RaceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  date?: boolean
 }, ExtArgs["result"]["race"]>
 
 export type RaceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  date?: boolean
 }, ExtArgs["result"]["race"]>
 
 export type RaceSelectScalar = {
   id?: boolean
+  date?: boolean
 }
 
-export type RaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id", ExtArgs["result"]["race"]>
+export type RaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "date", ExtArgs["result"]["race"]>
 export type RaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bets?: boolean | Prisma.Race$betsArgs<ExtArgs>
+  horses?: boolean | Prisma.Race$horsesArgs<ExtArgs>
   _count?: boolean | Prisma.RaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type RaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -378,9 +483,11 @@ export type $RacePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "Race"
   objects: {
     bets: Prisma.$BetPayload<ExtArgs>[]
+    horses: Prisma.$RaceHorsePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    date: Date
   }, ExtArgs["result"]["race"]>
   composites: {}
 }
@@ -776,6 +883,7 @@ readonly fields: RaceFieldRefs;
 export interface Prisma__RaceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   bets<T extends Prisma.Race$betsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Race$betsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  horses<T extends Prisma.Race$horsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Race$horsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RaceHorsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -806,6 +914,7 @@ export interface Prisma__RaceClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface RaceFieldRefs {
   readonly id: Prisma.FieldRef<"Race", 'Int'>
+  readonly date: Prisma.FieldRef<"Race", 'DateTime'>
 }
     
 
@@ -1024,7 +1133,7 @@ export type RaceCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   /**
    * The data needed to create a Race.
    */
-  data?: Prisma.XOR<Prisma.RaceCreateInput, Prisma.RaceUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.RaceCreateInput, Prisma.RaceUncheckedCreateInput>
 }
 
 /**
@@ -1215,6 +1324,30 @@ export type Race$betsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   take?: number
   skip?: number
   distinct?: Prisma.BetScalarFieldEnum | Prisma.BetScalarFieldEnum[]
+}
+
+/**
+ * Race.horses
+ */
+export type Race$horsesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RaceHorse
+   */
+  select?: Prisma.RaceHorseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RaceHorse
+   */
+  omit?: Prisma.RaceHorseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RaceHorseInclude<ExtArgs> | null
+  where?: Prisma.RaceHorseWhereInput
+  orderBy?: Prisma.RaceHorseOrderByWithRelationInput | Prisma.RaceHorseOrderByWithRelationInput[]
+  cursor?: Prisma.RaceHorseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RaceHorseScalarFieldEnum | Prisma.RaceHorseScalarFieldEnum[]
 }
 
 /**

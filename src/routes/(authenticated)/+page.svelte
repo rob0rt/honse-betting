@@ -4,7 +4,7 @@
 	import type { PageProps } from './$types';
 
 	const { data }: PageProps = $props();
-	const { user } = data;
+	const { user, race } = data;
 </script>
 
 <div class="flex flex-1 flex-col">
